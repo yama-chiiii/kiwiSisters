@@ -49,7 +49,7 @@
         fetch('./preload.php')
             .then(res => res.json())
             .then(data => {
-                const total = data.images.length + data.sounds.length + data.scenarios.length + data.controllers.length
+                const total = data.images.length + data.sounds.length + data.controllers.length + Object.values(data.scenarios).length; const total = data.images.length + data.sounds.length + data.controllers.length + Object.values(data.scenarios).reduce((sum, chapter) => sum + chapter.length, 0);
                 let loaded = 0
 
                 sessionStorage.setItem('storyData', JSON.stringify(data.scenarios))
@@ -89,12 +89,8 @@
                         .catch(() => checkDone())
                 })
 
-
-                data.scenarios.forEach((path) => {
-                    fetch(path)
-                        .then(res => res.text())
-                        .then(() => checkDone())
-                        .catch(() => checkDone())
+                Object.values(data.scenarios).forEach((chapter) => {
+                    chapter.forEach(() => checkDone())
                 })
 
             })
