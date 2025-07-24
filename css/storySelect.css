@@ -166,8 +166,8 @@ h2 {
   border: 3px solid #fff;
   background: #273c26;
   background-image:
-    url('/kiwiSisters/img/blood-big.png'),
-    url('/kiwiSisters/img/blood-small.png');
+    url('/img/blood-big.png'),
+    url('/img/blood-small.png');
   background-repeat: no-repeat, no-repeat;
   background-position: top left, bottom right;
   background-size: auto, auto;
