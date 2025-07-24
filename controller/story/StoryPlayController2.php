@@ -418,9 +418,12 @@ if (isset($_SESSION['chapterAfterUpload'])) {
               audio.preload = 'auto';
             });
 
-            data.scenarios.forEach(path => {
-              fetch(path).then(() => checkDone()).catch(() => checkDone());
+            Object.values(data.scenarios).forEach(chapter => {
+              Object.values(chapter).forEach(() => {
+                checkDone();
+              });
             });
+
 
             return new Promise(resolve => {
               const interval = setInterval(() => {

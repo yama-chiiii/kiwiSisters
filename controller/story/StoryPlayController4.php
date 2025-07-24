@@ -99,8 +99,8 @@ if (isset($_SESSION['chapterAfterUpload'])) {
       'キーウィ・キウイ': '/img/kiwi.png',
       'べと': '/img/beto.png',
       'もつ': '/img/motu.png',
-      '女子生徒A':'/img/A.png',
-      '女子生徒B':'/img/B.png',
+      '女子生徒A': '/img/A.png',
+      '女子生徒B': '/img/B.png',
     };
 
     const seMap = {
@@ -490,9 +490,12 @@ if (isset($_SESSION['chapterAfterUpload'])) {
               audio.preload = 'auto';
             });
 
-            data.scenarios.forEach(path => {
-              fetch(path).then(() => checkDone()).catch(() => checkDone());
+            Object.values(data.scenarios).forEach(chapter => {
+              Object.values(chapter).forEach(() => {
+                checkDone();
+              });
             });
+
 
             return new Promise(resolve => {
               const interval = setInterval(() => {
