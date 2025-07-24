@@ -95,8 +95,11 @@
                 })
 
                 Object.values(data.scenarios).forEach((chapter) => {
-                    chapter.forEach(() => checkDone())
+                    Object.values(chapter).forEach(() => {
+                        checkDone()
+                    })
                 })
+
 
             })
             .catch(err => {
