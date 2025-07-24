@@ -147,12 +147,24 @@ if (isset($_SESSION['chapterAfterUpload'])) {
         sessionStorage.setItem("currentChapter", "1");
       }
 
+      const allData = JSON.parse(sessionStorage.getItem("storyData") || "{}");
+      const pageData = allData[chapter]?.[page];
+
+      if (!pageData) {
+        console.warn("⚠️ 該当のページデータが存在しません。chapter:", chapter, "page:", page);
+        return;
+      }
+
+      console.log("🎯 localStorageから取得 =", pageData);
+      const data = pageData;
+      currentData = data;
+
       console.log(`[DEBUG] fetch前: chapter=${chapter}, page=${page}`);
 
-      const res = await fetch(`/controller/getPageData.php?chapter=${chapter}&page=${page}`);
-      const data = await res.json();
-      console.log("🎯 fetch結果 =", data);
-      currentData = data;
+      // const res = await fetch(`/controller/getPageData.php?chapter=${chapter}&page=${page}`);
+      // const data = await res.json();
+      // console.log("🎯 fetch結果 =", data);
+      // currentData = data;
 
       const bgmFrame = document.getElementById("bgm-frame");
       const bgmWindow = bgmFrame?.contentWindow;

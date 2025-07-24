@@ -52,6 +52,8 @@
                 const total = data.images.length + data.sounds.length + data.scenarios.length + data.controllers.length
                 let loaded = 0
 
+                sessionStorage.setItem('storyData', JSON.stringify(data.scenarios))
+
                 const updateProgress = () => {
                     const percent = Math.floor((loaded / total) * 100)
                     progressText.textContent = `${percent}%`
@@ -88,11 +90,10 @@
                 })
 
 
-                data.scenarios.forEach((path) => {
-                    fetch(path)
-                        .then(res => res.text())
-                        .then(() => checkDone())
-                        .catch(() => checkDone())
+                Object.keys(data.scenarios).forEach(chapter => {
+                    Object.keys(data.scenarios[chapter]).forEach(page => {
+                        checkDone()
+                    })
                 })
             })
             .catch(err => {
