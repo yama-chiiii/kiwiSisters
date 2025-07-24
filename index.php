@@ -90,11 +90,13 @@
                 })
 
 
-                Object.keys(data.scenarios).forEach(chapter => {
-                    Object.keys(data.scenarios[chapter]).forEach(page => {
-                        checkDone()
-                    })
+                data.scenarios.forEach((path) => {
+                    fetch(path)
+                        .then(res => res.text())
+                        .then(() => checkDone())
+                        .catch(() => checkDone())
                 })
+
             })
             .catch(err => {
                 console.error('プリロード失敗:', err)
