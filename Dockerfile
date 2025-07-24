@@ -34,3 +34,7 @@ RUN COMPOSER_MEMORY_LIMIT=-1 composer install --no-dev --optimize-autoloader -vv
 
 # 残りのファイルをコピー
 COPY . .
+
+# 最後に再度 composer install（vendor確実に生成）
+RUN COMPOSER_MEMORY_LIMIT=-1 composer install --no-dev --optimize-autoloader -vvv
+

@@ -1,7 +1,6 @@
 .git
 .gitignore
 node_modules
-vendor
 *.log
 *.md
 docker-compose.yml
