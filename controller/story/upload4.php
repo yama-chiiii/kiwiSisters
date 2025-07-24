@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['uploaded_file'])) {
 
     error_log("🧪 出力: $output");
 
-    if ($evalSucceeded && strpos($output, "Memory recovered.") !== false) {
+    if ($evalSucceeded && strpos($output, "あの日の記憶を取り戻す") !== false) {
         $nextPage = $correctjumpTarget;
         $_SESSION['cleared_program_4'] = true;
         $_SESSION['failure_count_4'] = 0;
