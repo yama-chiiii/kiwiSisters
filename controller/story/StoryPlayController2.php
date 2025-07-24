@@ -387,11 +387,18 @@ if (isset($_SESSION['chapterAfterUpload'])) {
         return fetch('/preload.php')
           .then(res => res.json())
           .then(data => {
-            const total = data.images.length + data.sounds.length + data.scenarios.length;
+            const total =
+              (data.images?.length || 0) +
+              (data.sounds?.length || 0) +
+              Object.values(data.scenarios || {}).reduce(
+                (sum, chapter) => sum + Object.values(chapter || {}).length,
+                0
+              );
+
             let loaded = 0;
 
             const updateProgress = () => {
-              const percent = Math.floor((loaded / total) * 100);
+              const percent = total > 0 ? Math.floor((loaded / total) * 100) : 100;
               progressText.textContent = `${percent}%`;
             };
 
@@ -403,14 +410,14 @@ if (isset($_SESSION['chapterAfterUpload'])) {
               }
             };
 
-            data.images.forEach(path => {
+            (data.images || []).forEach(path => {
               const img = new Image();
               img.onload = checkDone;
               img.onerror = checkDone;
               img.src = path;
             });
 
-            data.sounds.forEach(path => {
+            (data.sounds || []).forEach(path => {
               const audio = new Audio();
               audio.oncanplaythrough = checkDone;
               audio.onerror = checkDone;
@@ -418,12 +425,11 @@ if (isset($_SESSION['chapterAfterUpload'])) {
               audio.preload = 'auto';
             });
 
-            Object.values(data.scenarios).forEach(chapter => {
-              Object.values(chapter).forEach(() => {
+            Object.values(data.scenarios || {}).forEach(chapter => {
+              Object.values(chapter || {}).forEach(() => {
                 checkDone();
               });
             });
-
 
             return new Promise(resolve => {
               const interval = setInterval(() => {
@@ -433,8 +439,14 @@ if (isset($_SESSION['chapterAfterUpload'])) {
                 }
               }, 100);
             });
+          })
+          .catch(err => {
+            console.error("❌ preloadAssets error:", err);
+            progressText.textContent = "エラー";
+            loadingText.style.display = 'none';
           });
       }
+
 
       sessionStorage.removeItem("bgmPlayFailed");
       console.log("DOMContentLoaded START");
