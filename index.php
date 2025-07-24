@@ -53,7 +53,10 @@
                     data.images.length +
                     data.sounds.length +
                     data.controllers.length +
-                    Object.values(data.scenarios).reduce((sum, chapter) => sum + chapter.length, 0);
+                    Object.values(data.scenarios).reduce(
+                        (sum, chapter) => sum + Object.values(chapter).length,
+                        0
+                    );
 
                 let loaded = 0
 
@@ -95,10 +98,9 @@
                 })
 
                 Object.values(data.scenarios).forEach((chapter) => {
-                    Object.values(chapter).forEach(() => {
-                        checkDone()
-                    })
+                    Object.values(chapter).forEach(() => checkDone())
                 })
+
 
 
             })
