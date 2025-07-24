@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '25bbd379b66b33824d207b554186f541a1a1eac8',
+        'reference' => '42a58c8403deedfc8444d4379f646379cd00cc30',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '25bbd379b66b33824d207b554186f541a1a1eac8',
+            'reference' => '42a58c8403deedfc8444d4379f646379cd00cc30',
             'dev_requirement' => false,
         ),
         'composer/pcre' => array(
@@ -74,12 +74,12 @@
             'dev_requirement' => false,
         ),
         'phpoffice/phpspreadsheet' => array(
-            'pretty_version' => '2.3.9',
-            'version' => '2.3.9.0',
+            'pretty_version' => '4.5.0',
+            'version' => '4.5.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
             'aliases' => array(),
-            'reference' => '12e0d9f5ef459bf4d3427ef1bbe256b0d85f1e3a',
+            'reference' => '2ea9786632e6fac1aee601b6e426bcc723d8ce13',
             'dev_requirement' => false,
         ),
         'phpoption/phpoption' => array(

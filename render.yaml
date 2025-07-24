@@ -2,6 +2,7 @@ services:
   - type: web
     name: php-app
     env: docker
+    buildCommand: "composer install --no-dev --optimize-autoloader"
     envVars:
       - key: DB_HOST
         value: sql.freedb.tech
