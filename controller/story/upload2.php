@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['uploaded_file'])) {
     $status = null;
 
     try {
-        ob_start(); // 出力バッファ開始
+        ob_start();
         eval($code);
         ob_end_clean(); // 出力を抑制
     } catch (Throwable $e) {
