@@ -69,7 +69,7 @@ if (isset($_SESSION['chapterAfterUpload'])) {
       '白鷺_通常': '/img/shirasagi_standard.png',
       '白鷺_恐怖': '/img/shirasagi_scared.png',
       '白鷺_笑顔': '/img/shirasagi_smile.png',
-      '白鷺_和ロリ': 'shirasagikyun.png',
+      '白鷺_和ロリ': '/img/shirasagikyun.png',
       '白鷺_驚き': '/img/shirasagi_surprise.png',
       '白鷺_考察': '/img/shirasagi_thinking.png',
       '白鷺_怒る': '/img/shirasagi_ungry.png',
